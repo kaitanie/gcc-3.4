@@ -1,0 +1,3 @@
+version=3
+opts=dversionmangle=s/ds\d+// \
+  ftp://gcc.gnu.org/pub/gcc/releases/gcc-(3\.4[\d\.]*)

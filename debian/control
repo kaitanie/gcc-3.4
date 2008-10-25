@@ -1,0 +1,74 @@
+Source: gcc-3.4
+Section: devel
+Priority: optional
+Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Uploaders: Matthias Klose <doko@debian.org>, Gerhard Tonn <gt@debian.org>
+Standards-Version: 3.7.3
+Build-Depends: dpkg-dev (>= 1.13.9), libc6.1-dev (>= 2.3.5-10) [alpha ia64] | libc0.3-dev (>= 2.3.5-10) [hurd-i386] | libc0.1-dev (>= 2.3.5-10) [kfreebsd-i386] | libc6-dev (>= 2.3.5-10), libc6-dev-amd64 [i386], libc6-dev-sparc64 [sparc], libc6-dev-s390x [s390], libc6-dev-i386 [amd64], libc6-dev-powerpc [ppc64], libc6-dev-ppc64 [powerpc], lib32gcc1 [amd64 ppc64], lib64gcc1 [powerpc i386 sparc s390], libunwind7-dev (>= 0.98.5-7) [ia64], libatomic-ops-dev [ia64], m4, autoconf2.13, autoconf, automake1.4, automake1.7, libtool, autotools-dev, gawk, dejagnu (>= 1.4.3) [!hppa !hurd-i386], bzip2, expect [!hppa !hurd-i386], binutils (>= 2.16.1-3) | binutils-multiarch (>= 2.16.1-3), binutils-hppa64 (>= 2.16.1-3) [hppa], debhelper (>= 4.1), gperf (>= 2.7-3), bison (>= 1:2.3), flex (>= 2.5.33), gettext, texinfo (>= 4.3), zlib1g-dev, gcc-3.4 [!armel !hppa], locales [!m68k !hurd-i386], procps [!hppa !hurd-i386], sharutils,    realpath (>= 1.9.12), lsb-release
+Build-Depends-Indep: doxygen (>= 1.4.2), graphviz (>= 2.2), gsfonts-x11
+
+Package: gcc-3.4-base
+Architecture: any
+Section: devel
+Priority: optional
+Description: The GNU Compiler Collection (base package)
+ This package contains files common to all languages and libraries
+ contained in the GNU Compiler Collection (GCC).
+
+Package: gcc-3.4
+Architecture: any
+Section: devel
+Priority: optional
+Depends: gcc-3.4-base (= ${gcc:Version}), cpp-3.4 (= ${gcc:Version}), binutils (>= ${binutils:Version}), ${dep:libgcc}, ${dep:libunwinddev}, ${shlibs:Depends}
+Recommends: ${dep:libcdev}
+Conflicts: gcc-3.2 (<= 1:3.2.3-0pre8)
+Suggests: ${dep:gccdoc}, ${dep:libcbiarchdev}, ${dep:libgccbiarch}
+Provides: c-compiler
+Description: The GNU C compiler
+ This is the GNU C compiler, a fairly portable optimizing compiler for C.
+ .
+ ABIs changed between gcc-3.3 and gcc-3.4 on some architectures (hppa, m68k,
+ mips, mipsel, sparc). Please read /usr/share/doc/gcc-3.4/README.Debian
+ for more details.
+
+Package: cpp-3.4
+Architecture: any
+Section: interpreters
+Priority: optional
+Depends: gcc-3.4-base (= ${gcc:Version}), ${shlibs:Depends}
+Description: The GNU C preprocessor
+ A macro processor that is used automatically by the GNU C compiler
+ to transform programs before actual compilation.
+ .
+ This package has been separated from gcc for the benefit of those who
+ require the preprocessor but not the compiler.
+
+Package: libg2c0
+Section: libs
+Architecture: any
+Priority: optional
+Depends: gcc-3.4-base (= ${gcc:Version}), ${shlibs:Depends}
+Description: Runtime library for GNU Fortran 77 applications
+ Library needed for GNU Fortran 77 applications linked against the
+ shared library.
+
+Package: lib64g2c0
+Section: libs
+Architecture: i386 powerpc sparc s390
+Priority: optional
+Depends: gcc-3.4-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}
+Replaces: libg2c0 (<< 1:3.4.4-7)
+Description: Runtime library for GNU Fortran 77 applications (64bit)
+ Library needed for GNU Fortran 77 applications linked against the
+ shared library.
+
+Package: lib32g2c0
+Section: libs
+Architecture: amd64 ppc64
+Priority: optional
+Depends: gcc-3.4-base (= ${gcc:Version}), ${dep:libcbiarch}, ${shlibs:Depends}
+Replaces: libg2c0 (<< 1:3.4.4-7)
+Description: Runtime library for GNU Fortran 77 applications (32bit)
+ Library needed for GNU Fortran 77 applications linked against the
+ shared library.
+
