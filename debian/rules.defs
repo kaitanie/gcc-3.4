@@ -320,7 +320,7 @@ ifdef DEB_CROSS
   with_fortran := disabled for cross compiler package
 endif
 ifeq (f77, $(findstring f77,$(WITHOUT_LANG)))
-  with_fortran := disabled by environment
+  with_fortran := yes
 endif
 ifeq ($(DEB_TARGET_ARCH),hppa)
   with_fortran := disabled for architecure $(DEB_TARGET_ARCH)
@@ -332,7 +332,6 @@ ifeq ($(with_fortran)-$(with_dev),yes-yes)
 else
   with_fdev := no
 endif
-with_fdev := disabled for the gcc-3.4 build
 
 ifeq ($(with_fortran),yes)
   with_libg2c := yes
